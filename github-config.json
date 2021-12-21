@@ -1,0 +1,4 @@
+{
+  "redirect_uri": http://dillinger.io
+  "callback_uri": http://dillinger.io/oauth/github
+}
