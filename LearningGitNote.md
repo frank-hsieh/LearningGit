@@ -8,6 +8,8 @@ git everyday https://git-scm.com/docs/giteveryday
 
 git 2.34.1 推荐閱讀 gittutorial-2
 
+git-svn https://git-scm.com/docs/git-svn
+
 # gittutorial 筆記
 ```
 git config --global user.name "Frank Hsieh"
@@ -186,5 +188,82 @@ git diff v2.5:Makefile HEAD:Makefile.in
 git show v2.5:Makefile   # 閱讀內容
 ```
 # gitworkflows 筆記
+```
+git rebase --interactive  # 好像可以edit commit
+```
+```
+git stash push --keep-index # 好像可以先把local change收起來, 參見 git-stash
+```
+兩大merge工具是 git merge 與 git cheery-pick
+前者作用於branch leve; 後者作用於commit level。git document比較推荐 git merge.
+## 先暫停。此主題暫時不深入學習。
+
+# giteveryday 筆記
+
+## 單一開發者
+* git init
+* git log
+```
+git log --since='3 days ago'
+git log -10                  # 只看最近10次commit
+git log --until 2005-12-10   # 從最舊直到2005/12/10, 由新到舊列出
+git log v2.43.. curses/
+```
+* git switch; git branch
+```
+git swtich -c alsa-audio # create a new topic branch
+```
+* git add
+* git diff; git status
+```
+git diff HEAD^ # 這方法可以看到你未commit的修改與上一次commit的修改
+```
+* git commit
+```
+git commit -a -s # with your sign-off
+git commit -a --amend     # 修改最近一次的commit, 合入目前working directory的修改，保持message不變
+```
+* git restore
+```
+git restore curses/ux_audio_oss.c # 捨棄本地修改
+```
+* git merge
+* git rebase (不熟悉)
+* git tag
+## 單一開發者(參與者)
+* git clone
+* git pull; git fetch
+```
+git pull    # 如果你的master 是不含自己修改的，在master 用git pull挺不錯的
+git log -p ORIG_HEAD.. arch/i386/include/asm-i386 # 需了解ORIG_HEAD
+git ls-remote --heads http://git/kernel.org/.../jgarzik/libata-dev.git # 列出某個external repository的所有branches
+git pull git://git.kernel.org/pub/.../jgarzik/libata-dev.git ALL # 從特定repository的特定branch "ALL" fetch and merge
+git reset --hard ORIG_HEAD # 完全丟棄這一次的pull (ORIG_HEAD大概是上上一次pull的HEAD)
+git gc    # 做過git reset --hard, 做這件事蠻合理的
+```
+* git push
+* git format patch
+```
+git format-patch master # extract patches from your branch, releative to master.
+```
+* git send email
+```
+git send-email --to="person <email@example.com" 00*.patch
+```
+* git request pull
+### push into another repository (postpone the study)
+## 整合者
+* git am       # apply patched e-mailed
+* git pull
+* git format patch
+* git revert
+* git push    # 推送最新鮮的commits
+## 程式庫管理者 (postpone the study)
+* git daemon
+* git shell
+* git http backed 
+* git web
+
+
 
 
