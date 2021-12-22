@@ -114,7 +114,3 @@ git merge bob/master
 Alice 用這個指令來merge Bob的修改。
 
 
-
-
-
-
