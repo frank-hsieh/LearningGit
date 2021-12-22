@@ -6,7 +6,9 @@ complete manual https://git-scm.com/docs/user-manual
 
 git everyday https://git-scm.com/docs/giteveryday
 
-# 正文
+git 2.34.1 推荐閱讀 gittutorial-2
+
+# gittutorial 筆記
 ```
 git config --global user.name "Frank Hsieh"
 git config --global user.email klhsieh@kunlung.com
@@ -112,5 +114,77 @@ git log -p master..bob/master
 git merge bob/master
 ```
 Alice 用這個指令來merge Bob的修改。
+```
+git pull . remotes/bob/master
+```
+這個指令有什麼不同? 文件說這個等效上一個指令。(1) pull 就是 fetch + merge (2) 新見到一個字：remotes，這是否代表 remote-tracking branches 的集合呢? 注意 pull 總是拉到current branch.
+
+```
+bob$ git pull
+```
+因為Bob 是clone Alice's repository, 所以git pull 對他有效。
+```
+git config --get remote.origin.url
+git config -l                       # show complete configuration
+```
+如果你是clone 別人的repository, 第一個指令可以讓你看到clone的source.
+```
+bob$ git branch -r
+```
+在Bob 端，Git 似乎會保留所有的Alice的branch. 這些branch都是```origin/```開頭.
+
+心得：若我是clone者，我的源頭會被稱為```origin/```. 若我使用```remote add```把別人加成我的一個shorthand，看起來會被稱為```remotes/shorthand_name```
+
+```
+git clone alice.org:/home/alice/project myrepo
+```
+跨機器的clone語法。
+
+## 關於History
+```
+git show c82a22
+git show HEAD
+git show experimental
+git show HEAD^
+git show HEAD^^
+git show HEAD~4       # 等效 git show HEAD^^^^, 你可想成是-4
+```
+```
+git show HEAD^1         # the first parent
+git show HEAD^2         # the second parent
+```
+```
+git tag v2.5 1b2e1d
+git diff v2.5 HEAD
+git branch stable v2.5 # 從v2.5這個commit創建branch stable
+git reset --hard HEAD^ # 當前branch的頭與working directory都會被設到 HEAD^
+```
+注意! 最後的指令會清除任何local changes。如果你下了這指令，也會強迫所有從你這裡pull的人多做merge來使history消失。
+注意! 如果只是要撤消曾經push過的commit, 用git revert就好。
+
+```
+git grep "hello" v2.5 # 好像是search 單一commit
+git grep "hello"      # 搜尋所有Git管理的files
+```
+```
+git log v2.5..v2.6
+git log v2.5..
+git log --since="2 weeks ago"
+git log v2.5.. Makefile
+git log stable..master
+```
+```
+gitk --since="2 weeks ago" drivers/
+```
+以git管理的repository常常有merge。所以以list呈現的git log不太有意義。gitk是比較好的呈現。
+
+```
+git diff v2.5:Makefile HEAD:Makefile.in
+```
+比較兩個不同commit且不同檔名的的檔案
+```
+git show v2.5:Makefile   # 閱讀內容
+```
+# gitworkflows 筆記
 
 
