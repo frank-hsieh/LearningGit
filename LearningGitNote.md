@@ -3,6 +3,7 @@ start from here https://git-scm.com/docs/git?
 git tutorial https://git-scm.com/docs/gittutorial
 
 complete manual https://git-scm.com/docs/user-manual
+    comprehensive reference, please read man pages, or git-help. (git help clone, for example.)
 
 git everyday https://git-scm.com/docs/giteveryday
 
@@ -228,7 +229,9 @@ git commit -a --amend     # 修改最近一次的commit, 合入目前working dir
 git restore curses/ux_audio_oss.c # 捨棄本地修改
 ```
 * git merge
-* git rebase (不熟悉)
+* git rebase
+ref: https://git-scm.com/docs/user-manual#using-git-rebase
+自動化改變working branch的base, 中間可以停下來解conflict。可以取消整個過程回到原樣。
 * git tag
 ## 單一開發者(參與者)
 * git clone
@@ -263,6 +266,49 @@ git send-email --to="person <email@example.com" 00*.patch
 * git shell
 * git http backed 
 * git web
+
+# git-svn 筆記
+git-svn is not part of git. It is an independent software package.
+## description
+如果layout 非standard layout, see ```git init``` and ```git clone``` for detailed understanding.
+## Commands
+### init
+### fetch
+### clone
+### rebase
+### dcommit
+### branch
+### tag
+### log
+### blame
+### find-rev
+### set-tree
+### create-ignore
+### show-ignore
+### mkdirs
+### commit-diff
+### info
+### proplist
+### propget
+### propset
+### show-externals
+### gc
+### reset
+## Basic Examples
+* ```git svn clone```帶出來的是一種 clone的關係。
+## Handling of branches
+## Bugs
+* directory rename and copy is not detected by Git. (此處說的是auto detection)
+
+# Git User's Manual
+## ----- BASIC -----
+## Repositories and Branches
+## Exploring Git history
+## ----- For Developers -----
+## Developing with Git
+## Sharing development with others
+
+
 
 
 
