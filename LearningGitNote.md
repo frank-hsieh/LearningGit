@@ -311,7 +311,14 @@ git clone 做的事：
 ## Basic Examples
 * ```git svn clone```帶出來的是一種 clone的關係。
 clone 似乎是一種 repo-repo的關係...
+### example1
+
 ## Handling of branches
+## Caveats 警告
+* 建議 clone/fetch/dcommit to svn server directly.
+* 避免 git clone/pull/merge/push between Git repositories and branches.
+* 建議 git format-patch/am to exchange code between Git branches/users 或是直接 dcommit to svn.
+* __不建議__在你將要做dcommit的branch上施行 git merge or git pull, 因為 svn user看不到你做的任何merge
 ## Bugs
 * directory rename and copy is not detected by Git. (此處說的是auto detection)
 
