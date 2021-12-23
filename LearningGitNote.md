@@ -236,6 +236,8 @@ ref: https://git-scm.com/docs/user-manual#using-git-rebase
 ## 單一開發者(參與者)
 * git clone
 * git pull; git fetch
+* [other] git reset 
+    ** git reset --hard
 ```
 git pull    # 如果你的master 是不含自己修改的，在master 用git pull挺不錯的
 git log -p ORIG_HEAD.. arch/i386/include/asm-i386 # 需了解ORIG_HEAD
@@ -275,6 +277,18 @@ git-svn is not part of git. It is an independent software package.
 ### init
 ### fetch
 ### clone
+#### 原始的 git clone
+git clone 做的事：
+* clone a repository to a newly created directory.
+* source repository 的 active branch將成為working directory 的 initial branch
+* srouce repository 的 所有branches都將展現為 remote-tracking branches (用 ```git branch --remotes```觀看)
+* 在這之後, ```git fetch```可以update 所有 remote-tracking branches; ```git pull```會外加merge remote master branch 到current master branch
+* [心得] 這是指，```git fetch```會使用網路連線，並使local directory增大
+* 關鍵元素：
+    * refs/remotes/origin
+    * remote.origin.url
+    * remote.origin.fetch. 這兩個是configuration variables
+    * 
 ### rebase
 ### dcommit
 ### branch
@@ -296,6 +310,7 @@ git-svn is not part of git. It is an independent software package.
 ### reset
 ## Basic Examples
 * ```git svn clone```帶出來的是一種 clone的關係。
+clone 似乎是一種 repo-repo的關係...
 ## Handling of branches
 ## Bugs
 * directory rename and copy is not detected by Git. (此處說的是auto detection)
