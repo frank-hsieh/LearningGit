@@ -11,6 +11,12 @@ git 2.34.1 推荐閱讀 gittutorial-2
 
 git-svn https://git-scm.com/docs/git-svn
 
+# git 心得
+
+1. 如果要clone另一個repo, 並且因為make system參考svn info，需要使new repo也有svn metadata, 正確流程應該是
+   1. git clone
+   2. 在此 non-empty directory, svn checkout
+
 # gittutorial 筆記
 ```
 git config --global user.name "Frank Hsieh"
