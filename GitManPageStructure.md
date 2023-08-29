@@ -4,7 +4,7 @@
 * giteveryday
 * Git User's Manual
 ## Further Documentation ##
-* See Description for getting started.
+* See **Description** for getting started.
 * Git concept chapter of the user-manual 
 * gitcore-tutorial
 * gitworkflow
@@ -21,7 +21,3 @@
 * gitcli
 * The Git User's Manual
 * gitworkflow
-
-
-
-file content.
